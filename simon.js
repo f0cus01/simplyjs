@@ -1,26 +1,34 @@
 console.log('Simply.js demo!');
 
-simply.on('singleClick', function(e) {
-  console.log(util2.format('single clicked $button!', e));
-  simply.setText({
-    subtitle: 'Pressed ' + e.button + '!',
-  });
-});
+var q = new Array();
+q[0] = "Portugal";
+q[1] = "Canada";
+q[2] = "USA";
 
-simply.on('longClick', function(e) {
-  console.log(util2.format('long clicked $button!', e));
+var a = new Array();
+a[0] = "Lisbon";
+a[1] = "Ontario";
+a[2] = "Washington";
+
+var random=Math.floor(Math.random()*3)
+
+simply.setText({
+  title: 'PebbleFlash!',
+  body: 'Welcome to PebbleFlash! Flip wrist to start!',
+}, true);
+
+simply.on('accelTap', function(e) {
+  simply.setText({subtitle: q[random],
+  });
 });
 
 simply.on('accelTap', function(e) {
-  console.log(util2.format('tapped accel axis $axis $direction!', e));
-  simply.setText({
-    subtitle: 'Tapped ' + (e.direction > 0 ? '+' : '-') + e.axis + '!',
+  simply.setText({body: a[random],
   });
 });
 
-simply.setText({
-  title: 'Hello World!',
-  body: 'This is Simons demo. Press buttons or tap the watch!',
-}, true);
+
+
+
 
 simply.begin();
